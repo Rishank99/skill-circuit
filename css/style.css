@@ -13,7 +13,6 @@
 html{
     font-size: 62.5%;
     /* 1 rem = 10px */
-    scroll-snap-type: Y proximity;
 }
 
 h1,
@@ -63,10 +62,6 @@ li{
 /* Layout */
 
 /* 2 */
-section{
-    scroll-snap-align: center;
-}
-
 .container{
     max-width: 114rem;
     margin: 0 auto;
