@@ -1,0 +1,834 @@
+/* Maximum use 2 fonts for website */
+
+/* Base Rule */
+
+/* 1 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", serif;
+}
+
+html{
+    font-size: 62.5%;
+    /* 1 rem = 10px */
+    scroll-snap-type: Y proximity;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: "Poppins", serif;
+}
+
+p, li, a, label{
+    font-family: "Urbanist", serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    color: var(--para-color);
+    line-height: 1.5;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+/* Theme */
+
+/* 4 */
+:root{
+    --main-color: #0062ff;
+    --supporting-color: #ebf3fe;
+    --font-color: #424242;
+    --bg-color: #f7fcff;
+    --heading-color: #000a19;
+    --para-color: #504e4d;
+    --h-color: #003b99;
+    --white-color: #ffffff;
+    --btn-hover-bg-color: #003b99;
+    --btn-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --footer-bg-color: #040d12;
+    --brand-color: #4CC9FE;
+}
+
+/* Layout */
+
+/* 2 */
+section{
+    scroll-snap-align: center;
+}
+
+.container{
+    max-width: 114rem;
+    margin: 0 auto;
+    padding: 6.3rem 1.2rem;
+    /* border: 1px solid black; */
+}
+
+/* 6 */
+.grid{
+    display: grid;
+}
+
+.grid-two--cols{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 17 */
+.grid-three--cols{
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 22 */
+.grid-four--cols{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 27 */
+/* .section-about .container:first-child,
+.section-blog .container:first-child,
+.section-course .container:first-child,
+.section-contact--homepage .container:first-child,
+.section-why--choose .container:first-child,
+.section-contact .container:first-child{
+    padding: 6.4rem 0 2.4rem 0;
+} */
+
+/* Shorthand */
+:is(.section-about, .section-blog, .section-course, .section-contact--homepage, .section-why--choose, .section-contact) .container:first-child{
+    padding: 6.4rem 2.4rem 2.4rem 2.4rem;
+}
+
+/* Module/Reusable */
+
+/* 7 */
+.btn{
+    /* Give display:inline-block; since padding top-bottom does not work on inline element. */
+    display: inline-block;
+    padding: 1.2rem 3.2rem;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    border-radius: 0.6rem;
+}
+
+/* 14 */
+.section-common-heading{
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.section-common-subheading{
+    color: var(--heading-color);
+}
+
+/* 16 */
+.section-common--title{
+    font-size: 2rem;
+    margin: 2.4rem 0 1.2rem 0;
+}
+
+/* 21 */
+.fa-solid{
+    padding: 2.4rem;
+    background-color: var(--supporting-color);
+    font-size: 2.4rem;
+    border-radius: 50%;
+    color: var(--h-color);
+}
+
+/* States */
+
+/* 8 */
+.btn:hover{
+    background-color: var(--btn-hover-bg-color);
+    cursor: pointer;
+    box-shadow: var(--btn-box-shadow);
+}
+
+/* 3 */
+/* Start navbar section */
+.section-navbar{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    /* border: 1px solid red; */
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    background-color: var(--white-color);
+}
+
+.section-navbar .container{
+    display: flex;
+    /* space-between will make both end at extreme right and left ends of div */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem 2.4rem;
+
+    & .navbar-brand h1{
+        font-size: 2.2rem;
+        border: 0.2rem solid var(--heading-color);
+        padding: 0 0.5rem;
+        color: var(--brand-color);
+
+        & span{
+            background-color: var(--brand-color);
+            color: var(--white-color);
+            font-weight: 900;
+            padding: 0 0.3rem;
+        }
+    }
+
+
+}
+
+.section-navbar .navbar ul{
+    display: flex;
+    gap: 3.2rem;
+
+    /* 5 */
+    & li a{
+        text-transform: uppercase;
+        color: var(--heading-color);
+        font-weight: 600;
+        display: inline-block;
+        font-size: 1.6rem;
+        position: relative;
+
+        /* To add a line below each of list items. Change width by commenting transition to see effect of ::after */
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: -0.2rem;
+            left: 0;
+            width: 0%;
+            border-bottom: 0.2rem solid var(--main-color);
+            transition: all 0.3s linear;
+        }
+
+        &:hover{
+            color: var(--main-color);
+        }
+    }
+
+    & li a:hover::after{
+        width: 100%;
+    }
+}
+/* End navbar section */
+
+/* 9 */
+/* Start HERO Section */
+main{
+    /* 13- Giving position:realtive; for shape divider*/
+    position: relative;
+    background-image: linear-gradient(
+        to top right,
+        #3d86fa,
+        #4484fb,
+        #679eff,
+        #b3d2ff,
+        #ebf3fe
+    );
+}
+
+/* 10 */
+.section-hero--image img{
+    width: 100%;
+    height: auto;
+    /* Above code makes image responsive */
+
+    /* To flip image to left */
+    transform: scaleX(-1);
+}
+
+/* 11 */
+.section-hero .grid{
+    align-items: center;
+    gap: 6.4rem;
+
+    & .hero-subheading{
+        letter-spacing: 0.2rem;
+        font-size: 1.7rem;
+        word-spacing: 0.2rem;
+        color: var(--btn-hover-bg-color);
+        font-weight: 700;
+    }
+
+    & .hero-heading{
+        font-size: 4.2rem;
+        color: var(--h-color);
+        font-family: "Jost";
+        font-weight: 900;
+        line-height: 1.5;
+    }
+
+    & .hero-para{
+        color: var(--white-color);
+        margin: 2rem 0 4.2rem 0;
+    }
+}
+
+/* 12 */
+/* Shape Divider */
+.custom-shape-divider-bottom-1740054578 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1740054578 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 10rem;
+}
+
+.custom-shape-divider-bottom-1740054578 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* End HERO Section */
+
+
+/* Start ABOUT Section */
+/* 15 */
+.section-about img{
+    padding: 2.4rem;
+    background-color: var(--supporting-color);
+    width: 15rem;
+    height: auto;
+    border-radius: 50%;
+
+    /* 19 */
+    transition: all 0.3s linear;
+}
+
+.section-about .about-div{
+    text-align: center;
+}
+
+/* 18 */
+.section-about .grid{
+    gap: 6.4rem;
+}
+
+/* 20 */
+.about-div .icon img:hover{
+    rotate: 360deg;
+    background-image: linear-gradient(to right, #0575e6, #021b79);
+}
+/* End ABOUT Section */
+
+/* Start COURSES Section */
+
+/* 23 */
+.section-course .grid{
+    gap: 3.2rem;
+}
+
+.section-course .course-div:hover{
+    box-shadow: var(--btn-box-shadow);
+}
+
+.section-course .course-div{
+    padding: 3.2rem;
+}
+
+/* 24 */
+.course-div:nth-child(2) .icon .fa-solid{
+    color: #68bf9b;
+    background-color: #e7f6ef;
+}
+/* To target the second font-awesome */
+
+.course-div:nth-child(3) .icon .fa-solid{
+    color: #ff8b52;
+    background-color: #fbebe8;
+}
+.course-div:nth-child(4) .icon .fa-solid{
+    color: #183d3d;
+    background-color: #ccf7f7;
+}
+.course-div:nth-child(5) .icon .fa-solid{
+    color: #d988b9;
+    background-color: rgb(247, 223, 238);
+}
+.course-div:nth-child(6) .icon .fa-solid{
+    color: #ff9b50;
+    background-color: #f6dfce;
+}
+.course-div:nth-child(7) .icon .fa-solid{
+    color: #1450a3;
+    background-color: #dce9fa;
+}
+
+/* 28 */
+.section-course{
+    background-color: var(--bg-color);
+}
+
+/* End COURSES Section */
+
+/* Start WhyChoose Section */
+
+/* 25 */
+.common-text--highlight{
+    width: 6rem;
+    aspect-ratio: 1;
+    background-color: var(--supporting-color);
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.section-why--choose .text-align--right .why-choose--div{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    text-align: right;
+}
+
+.choose-center--div img{
+    width: 90%;
+    height: auto;
+    padding: auto;
+}
+
+.section-why--choose .grid{
+    gap: 9.6rem;
+}
+
+.why-choose--div{
+    margin-top: 3.2rem;
+}
+
+.choose-center--div, figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.choose-center--div figure::before, 
+.choose-center--div figure::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    /* To make blue circle goes behind the image */
+    z-index: -1;
+}
+
+.choose-center--div figure::after{
+    width: 45rem;
+    aspect-ratio: 1;
+    /* To make circle goes behind 1st circle */
+    z-index: -2;
+    background-color: transparent;
+    border: 0.5rem solid var(--supporting-color);
+}
+
+.choose-center--div figure::before{
+    animation: circle 5s linear infinite;
+}
+
+@keyframes circle{
+    0%{
+        background-color: #b3d0ff;
+    }
+    25%{
+        background-color: #80b1ff;
+    }
+    50%{
+        background-color: #4d91ff;
+    }
+    75%{
+        background-color: #99c0ff;
+    }
+    100%{
+        background-color: #3381ff;
+    }
+}
+/* End WhyChoose Section */
+
+/* Start BLOG Section */
+
+/* 34 */
+.section-blog{
+    background-color: var(--bg-color);
+
+    & img{
+        width: 100%;
+        height: auto;
+    }
+
+    & .blog-date{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.6rem;
+        font-size: 1.4rem;
+
+        & .fa-solid{
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+
+    & .section-common--title{
+        margin-top: 0.8rem;
+    }
+    
+    & .blog{
+        box-shadow: var(--btn-box-shadow);
+        transition: scale 0.3s linear;
+
+        &:hover{
+            scale: 1.1;
+        }
+
+        & .blog-content{
+            padding: 1.4rem 2.4rem 2.4rem;
+        }
+        
+    }
+
+    & .grid{
+        gap: 6.4rem;
+    }
+}
+
+/* End BLOG Section */
+
+/* Start contact home section */
+
+/* 26 */
+.section-contact--homepage{
+    width: 60%;
+    min-height: 30rem;
+    margin: -10rem auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    margin-bottom: 5rem;
+    border-radius: 0.2rem;
+    padding: 0 3.2rem;
+
+    /* 30 */
+    position: relative;
+    bottom: -20rem;
+    background-color: var(--white-color);
+
+    & .grid{
+        align-items: center;
+        gap: 6.4rem;
+    }
+}
+
+.section-contact--homepage img{
+    width: 90%;
+    height: auto;
+}
+
+.contact-title{
+    font-size: 3.4rem;
+    line-height: 1.2;
+}
+
+.contact-content p{
+    margin: 1.2rem 0 2.4rem 0;
+}
+
+.section-contact--homepage .fa-solid{
+    padding: 0;
+    color: var(--white-color);
+    background-color: var(--main-color);
+}
+
+.section-contact--homepage a{
+    color: var(--white-color);
+}
+
+input:focus-visible, textarea:focus-visible{
+    outline: 0.1rem solid var(--btn-hover-bg-color);
+}
+/* End contact home section */
+
+/* Start Actual Contact Page Section */
+
+/* 35 */
+.mb-3{
+    margin-bottom: 3.2rem;
+}
+
+label{
+    display: block;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 1.4rem 2.4rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+}
+
+.contact-content .grid{
+    gap: 6.4rem;
+}
+
+::placeholder{
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.btn-submit{
+    font-size: 1.8rem;
+    border: none;
+}
+
+.section-contact {
+
+    & .grid{
+        align-items: center;
+        gap: 6.4rem;
+    }
+}
+/* End Actual Contact Page Section */
+
+/* Start FOOTER Section */
+/* 29 */
+footer{
+    background-color: var(--footer-bg-color);
+    padding-top: 15rem;
+}
+
+footer *{
+    color: var(--white-color);
+}
+
+/* 31 */
+.footer-subheading{
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.footer-1--div p{
+    margin: 1rem 0 3.2rem 0;
+}
+
+.footer-1--div{
+    text-align: left;
+    /* 33 */
+    & .social-footer--icons{
+        display: flex;
+        gap: 2.4rem;
+    
+
+    /* 32 */
+    & .fa-brands{
+        width: 5rem;
+        aspect-ratio: 1;
+        background-color: var(--supporting-color);
+        color: var(--btn-hover-bg-color);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.3s linear;
+
+        /* 34 */
+        &:hover{
+            color: var(--supporting-color);
+            background-color: var(--btn-hover-bg-color);
+            rotate: 360deg;
+        }
+    }
+}
+}
+
+footer .grid{
+    text-align: right;
+}
+/* End FOOTER Section */
+
+/* Start Scrollbar Section */
+/* Setting width of scrollbar */
+::-webkit-scrollbar{
+    width: 1rem;
+}
+
+/* Setting background-color of strip ofscrollbar */
+::-webkit-scrollbar-track{
+    background-color: var(--supporting-color);
+}
+
+/* Setting the part of scrollbar which we drag up and down  */
+::-webkit-scrollbar-thumb{
+    background: var(--main-color);
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--heading-color);
+}
+
+/* End Scrollbar Section */
+
+/* Start Media Queries */
+
+@media (width <= 1220px){
+    html{
+        font-size: 56.25%;
+        /* 1rem = 9px */
+    }
+}
+
+@media (width <= 1011px){
+    :is(.section-course, .section-blog) .grid-four--cols{
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (width <= 998px){
+    .section-hero{
+        height: auto;
+        padding-bottom: 6rem;
+
+        & .grid-two--cols{
+            grid-template-columns: 1fr;
+
+            & .section-hero--content{
+                order: 2;
+            }
+
+            & .section-hero--image{
+                order: 1;
+
+                & img{
+                    width: 50%;
+                    margin-top: 6rem;
+                }
+            }
+        }
+    }
+
+    .section-about .about-div{
+        text-align: left;
+    }
+
+    footer .grid-four--cols{
+        text-align: left;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+
+        & .footer-1--div{
+            grid-row: 2 / 3;
+            grid-column: 1 / 4;
+            margin-top: 6.4rem;
+        }
+    }
+
+    .section-why--choose{
+        & .choose-center--div{
+            & figure::before{
+                width: 0;
+                height: 0;
+                background-color: transparent;
+                padding: 0;
+            }
+
+            & figure::after{
+                width: 0;
+                height: 0;
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+
+        & .choose-center--div{
+            order: 1;
+        }
+
+        & .choose-left--div{
+            order: 2;
+        }
+
+        & .choose-right--div{
+            order: 3;
+        }
+    }
+
+    :is(.section-about, .section-blog, .section-course, .section-contact--homepage, .section-why--choose) .grid{
+        gap: 6.4rem;
+    }
+}
+
+/* For mobiles */
+@media (width <= 768px){
+    .grid-two--cols, .grid-three--cols{
+        grid-template-columns: 1fr;
+    }
+
+    .section-navbar .container{
+        display: flex;
+        flex-direction: column;
+
+        & .navbar-brand{
+            text-align: center;
+            margin-bottom: 2.4rem;
+        }
+
+        & .navbar ul {
+            gap: 2.4rem
+        }
+    }
+
+    .section-why--choose{
+        & img{
+            width: 40%;
+        }
+
+        & .text-align--right .why-choose--div{
+            align-items: start;
+            text-align: left;
+        } 
+
+        & .grid{
+            gap: 1.4rem;
+        }
+    }
+
+    .section-contact--homepage .btn{
+        display: block;
+        text-align: center;
+    }
+
+    .contact-title{
+        font-size: 2.4rem;
+    }
+
+    :is(.section-contact--homepage) .container:first-child{
+        padding: 6.4rem 0rem 2.4rem 0rem;
+    }
+}
+/* End Media Queries */
